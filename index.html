@@ -1,0 +1,183 @@
+<html>
+
+
+<head>
+
+    <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jquery.mosaicflow/jquery.mosaicflow.min.js"></script>
+
+    <style>
+        body{
+            margin: 0;
+            background: rgb(242, 62, 62);
+            padding: 0;
+            color: #fff;
+        }
+
+        #Contador{
+            font-family: 'Slabo 27px', arial,sans-serif;
+            width: 600px;
+            height: 100px;
+            font-size: 50px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -300px;
+            text-align: center;
+            margin-top: -50px;
+            z-index: 100;
+        }
+
+        .texto{
+            font-family: 'Slabo 27px', arial,sans-serif;
+            width: 600px;
+            height: 100px;
+            font-size: 29px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -300px;
+            text-align: center;
+            margin-top: -91px;
+            z-index: 100;
+            opacity: 0.35;
+        }
+
+        .coracao{
+            font-family: 'Slabo 27px', arial,sans-serif;
+            width: 600px;
+            height: 100px;
+            font-size: 50px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-left: -300px;
+            text-align: center;
+            margin-top: -50px;
+            z-index: 100;
+        }
+
+        .mosaicflow__column { float:left; }
+
+        .mosaicflow__item img {
+            display:block;
+            width:100%;
+            height:auto;
+        }
+
+        .meter {
+            height: 20px;
+            position: relative;
+            background: #FFF;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 30px;
+            padding: 10px;
+            position: fixed;
+            width: 588px;
+            top: 50%;
+            left: 50%;
+            margin-top: 30px;
+            margin-left: -302px;
+        }
+
+        .meter > span {
+            display: block;
+            height: 100%;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background: rgb(242, 62, 62);
+            position: relative;
+            overflow: hidden;
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<!--<div class="clearfix mosaicflow">-->
+<!--<div class="mosaicflow__item">-->
+<!--<img width="500" height="300" src="1.jpg" alt=""> </div>-->
+<!--<div class="mosaicflow__item">-->
+<!--<img width="500" height="500" src="2.jpg" alt="">-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="texto">Ela volta em</div>
+<div id="Contador"></div>
+<!--<div class="coracao">♥</div>-->
+<div class="meter">
+    <span></span>
+</div>
+
+
+
+</body>
+<script>
+
+    CountDownTimer('12/23/2015 09:0 AM', 'Contador');
+
+    function CountDownTimer(dt, id)
+    {
+        var end = new Date(dt);
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        function showRemaining() {
+            var now = new Date();
+            var distance = end - now;
+            if (distance < 0) {
+
+                clearInterval(timer);
+                document.getElementById(id).innerHTML = 'Bem-vinda meu amor. Vamos continuar nossa historia!';
+
+                return;
+            }
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor((distance % _day) / _hour);
+            var minutes = Math.floor((distance % _hour) / _minute);
+            var seconds = Math.floor((distance % _minute) / _second);
+
+            document.getElementById(id).innerHTML = days + 'dias ';
+            document.getElementById(id).innerHTML += hours + 'hs ';
+            document.getElementById(id).innerHTML += minutes + 'min ';
+            document.getElementById(id).innerHTML += seconds + 'seg';
+        }
+
+        timer = setInterval(showRemaining, 1000);
+    }
+
+
+
+    $(document).ready(function(){
+//        $('#mycontainer').mosaicflow({
+//            itemSelector: '.item',
+//            minItemWidth: 300
+//        });
+
+        var today = new Date();
+        var start = new Date('03/09/2015 09:0 AM');
+        var end = new Date('12/23/2015 09:0 AM');
+        var percentage = Math.round(((end - start) * 100 ) / today) + '%';
+        $('.meter span').width(percentage);
+    })
+
+
+</script>
+
+
+
+</html>
