@@ -16,6 +16,10 @@
             color: #fff;
         }
 
+        .container{
+            display: none;
+        }
+
         #Contador{
             font-family: 'Slabo 27px', arial,sans-serif;
             width: 600px;
@@ -86,13 +90,15 @@
         .meter > span {
             display: block;
             height: 100%;
+            width: 0;
             border-top-right-radius: 8px;
             border-bottom-right-radius: 8px;
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
-            background: rgb(242, 62, 62);
+            background: #f23e3e;
             position: relative;
             overflow: hidden;
+            transition: all 1.2s ease 0s;
         }
 
     </style>
@@ -112,11 +118,12 @@
 <!--</div>-->
 <!--</div>-->
 
-<div class="texto">Ela volta em</div>
-<div id="Contador"></div>
-<!--<div class="coracao">♥</div>-->
-<div class="meter">
-    <span></span>
+<div class="container">
+    <div class="texto">Ela volta em</div>
+    <div id="Contador"></div>
+    <div class="meter">
+        <span></span>
+    </div>
 </div>
 
 
@@ -157,9 +164,19 @@
             document.getElementById(id).innerHTML += seconds + 'seg';
         }
 
-        timer = setInterval(showRemaining, 1000);
+        setInterval(showRemaining, 1000);
+        setInterval(setPercentageBetweenDates, 2000)
     }
 
+
+
+    function setPercentageBetweenDates(){
+        var now = new Date();
+        var start = new Date('03/09/2015 09:0 AM');
+        var end = new Date('12/23/2015 09:0 AM');
+        var percentage = ( ( now - start ) / ( end - start ) ) * 100 + "%" ;
+        $('.meter span').width(percentage);
+    }
 
 
     $(document).ready(function(){
@@ -168,11 +185,10 @@
 //            minItemWidth: 300
 //        });
 
-        var now = new Date();
-        var start = new Date('03/09/2015 09:0 AM');
-        var end = new Date('12/23/2015 09:0 AM');
-        var percentage = Math.round(( ( now - start ) / ( end - start ) ) * 100) + "%" ;
-        $('.meter span').width(percentage);
+        setTimeout(function(){
+            $(".container").fadeIn();
+        }, 1300)
+
     })
 
 
