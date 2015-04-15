@@ -168,10 +168,10 @@
 //            minItemWidth: 300
 //        });
 
-        var today = new Date();
+        var now = new Date();
         var start = new Date('03/09/2015 09:0 AM');
         var end = new Date('12/23/2015 09:0 AM');
-        var percentage = Math.round(((end - start) * 100 ) / today) + '%';
+        var percentage = Math.round(( ( now - start ) / ( end - start ) ) * 100) + "%" ;
         $('.meter span').width(percentage);
     })
 
