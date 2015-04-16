@@ -5,6 +5,8 @@
 
     <meta charset="UTF-8">
 
+    <link href="/images/favicon.ico" rel="icon shortcut" type="image/x-icon" />
+
     <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -18,6 +20,15 @@
             color: #fff;
         }
 
+        a {
+            color: #fff9ff;
+            text-decoration: none;
+        }
+
+        a:hover{
+            text-decoration: none;
+        }
+
         .u-centralize{
             margin: 80px auto;
             text-align: center;
@@ -28,7 +39,7 @@
         .Container {
             display: none;
             width: 600px;
-            margin: 35px auto;
+            margin: 25px auto;
             overflow: hidden;
         }
 
@@ -37,7 +48,7 @@
             width: 600px;
             font-size: 50px;
             position: relative;
-            top: 0
+            top: 0;
             left: 0;
             text-align: center;
             z-index: 100;
@@ -61,6 +72,23 @@
             top: 4px;
             padding: 0 5px;
             font-size: 38px
+        }
+
+        .Container-footer{
+            position: relative;
+            margin: 50px 0 0 0;
+            float: left;
+            text-align: center;
+            font-family: 'Slabo 27px', arial,sans-serif;
+            font-size: 17px;
+            width: 100%;
+            color: #ffe9ee;
+            opacity: 0.6;
+        }
+
+        .Container-footer:hover{
+            opacity: 1;
+            transition: all 0.6s ease 0s;
         }
 
         .PercentageRuler {
@@ -130,6 +158,11 @@
             margin: 0 6px;
         }
 
+        .DaySpentBox:hover .DaySpentBox-text,  .DaySpentBox:hover .DaySpentBox-content{
+            color: #ffe3e4;
+            transition: all 0.6s ease 0s;
+        }
+
         .DaySpentBox-content{
             font-size: 91px;
             letter-spacing: -8px;
@@ -153,6 +186,11 @@
             float: left;
             padding: 5px;
             margin: 0 6px;
+        }
+
+        .WeekBox:hover .WeekBox-toCome{
+            color: #ffe3e4;
+            transition: all 0.6s ease 0s;
         }
 
         .WeekBox-title{
@@ -298,7 +336,7 @@
 <!--</div>-->
 
 <div class="Container">
-    <div class="Container-text">Meu <span class="Container-heart pulse2">♥</span> volta em</div>
+    <div class="Container-text">Meu <span class="Container-heart pulse2" title="amor">♥</span> volta em</div>
     <div id="Contador"></div>
     <div class="PercentageRuler">
         <span class="js-percentageRuler"></span>
@@ -329,6 +367,11 @@
                 Faltam <span></span> semanas
             </div>
         </div>
+    </div>
+
+    <div class="Container-footer">
+        Nesse dia nublado e de greve (15/04) eu ia fazer um poema, mas acabei fazendo isso :D<br/>
+        De <a href="https://www.facebook.com/jonataseduardo" target="_blank">@jojo</a> para <a href="https://www.facebook.com/liselen.avila" target="_blank">@lelinha</a> com muiiito amor!
     </div>
 
 </div>
