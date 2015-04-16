@@ -10,7 +10,8 @@
     <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/jquery.mosaicflow/jquery.mosaicflow.min.js"></script>
+    <!--<script src="bower_components/jquery.mosaicflow/jquery.mosaicflow.min.js"></script>-->
+    <script src="bower_components/jquery.mb.ytplayer/inc/jquery.mb.YTPlayer.min.js"></script>
 
     <style>
         body{
@@ -149,7 +150,6 @@
 
         .DaySpentBox{
             max-width: 168px;
-            background: #F74444;
             padding: 5px;
             float: left;
             min-width: 165px;
@@ -182,7 +182,6 @@
         .WeekBox {
             max-width: 168px;
             min-width: 165px;
-            background: #F74444;
             float: left;
             padding: 5px;
             margin: 0 6px;
@@ -214,6 +213,7 @@
             color: #f68181;
         }
 
+
         .Week{
             width: 10px;
             height: 10px;
@@ -229,6 +229,10 @@
             background: #f68181;
         }
 
+
+        #wrapper_mbYTP_bgndVideo{
+            transition: all 0.6s ease 0s;
+        }
 
         .pulse2 {
             -webkit-animation: pulse2 1s linear infinite;
@@ -335,8 +339,10 @@
 <!--</div>-->
 <!--</div>-->
 
+<a id="bgndVideo" class="player">My video</a>
+
 <div class="Container">
-    <div class="Container-text">Meu <span class="Container-heart pulse2" title="amor">♥</span> volta em</div>
+    <div class="Container-text js-hideOnShowVideo">Meu <span class="Container-heart pulse2" title="amor">♥</span> volta em</div>
     <div id="Contador"></div>
     <div class="PercentageRuler">
         <span class="js-percentageRuler"></span>
@@ -346,7 +352,7 @@
         </div>
     </div>
 
-    <div class="u-centralize">
+    <div class="u-centralize js-hideOnShowVideo">
         <div class="DaySpentBox">
             <div class="DaySpentBox-content js-DaySpentBox-content">
 
@@ -369,7 +375,7 @@
         </div>
     </div>
 
-    <div class="Container-footer">
+    <div class="Container-footer js-hideOnShowVideo">
         Nesse dia nublado e de greve (15/04) eu ia fazer um poema, mas acabei fazendo isso :D<br/>
         De <a href="https://www.facebook.com/jonataseduardo" target="_blank">@jojo</a> para <a href="https://www.facebook.com/liselen.avila" target="_blank">@lelinha</a> com muiiito amor!
     </div>
@@ -484,6 +490,21 @@
     }
 
 
+    function animateVideo(){
+        $(".YTPOverlay").mouseover(function() {
+            $("#wrapper_mbYTP_bgndVideo").css('opacity', 0.8);
+            $(".js-hideOnShowVideo").css('opacity', 0);
+        });
+
+        $(".Container").mouseover(function(){
+            $("#wrapper_mbYTP_bgndVideo").css('opacity', 0.1);
+            $(".js-hideOnShowVideo").css('opacity', 1);
+        })
+    }
+
+
+
+
     $(document).ready(function(){
 //        $('#mycontainer').mosaicflow({
 //            itemSelector: '.item',
@@ -494,6 +515,18 @@
             $(".Container").fadeIn();
         }, 1300)
 
+        var videos = [
+            {videoURL:"O9FECCJ1_7M",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "UPo7iNKoCGQ",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "OQsYiSr58aU",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "wA0lYaekxxk",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "O2RPckRLf0w",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "JRCTLJQBRC4",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:1, loop:false, ratio:"4/3", addRaster:false}
+        ];
+
+
+        jQuery("#bgndVideo").YTPlaylist(videos, true);
+        animateVideo();
     })
 
 
