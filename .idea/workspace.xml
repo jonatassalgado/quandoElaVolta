@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="58ae9012-790f-4ad2-94cd-56948d41d198" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="quandoElaVolta.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53287196" vertical-offset="9106" max-vertical-offset="9756">
-              <caret line="523" column="35" selection-start-line="523" selection-start-column="35" selection-end-line="523" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.5017301" vertical-offset="6550" max-vertical-offset="9774">
+              <caret line="380" column="37" selection-start-line="380" selection-start-column="37" selection-end-line="380" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -381,8 +380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53287196" vertical-offset="9106" max-vertical-offset="9756">
-          <caret line="523" column="35" selection-start-line="523" selection-start-column="35" selection-end-line="523" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.5017301" vertical-offset="6550" max-vertical-offset="9774">
+          <caret line="380" column="37" selection-start-line="380" selection-start-column="37" selection-end-line="380" selection-end-column="37" />
           <folding />
         </state>
       </provider>
