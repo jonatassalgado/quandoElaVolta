@@ -16,62 +16,49 @@
             color: #fff;
         }
 
-        .container{
+        .Container {
             display: none;
+            width: 600px;
+            margin: auto;
         }
 
         #Contador{
             font-family: 'Slabo 27px', arial,sans-serif;
             width: 600px;
-            height: 100px;
             font-size: 50px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            margin-left: -300px;
+            position: relative;
+            top: 0
+            left: 0;
             text-align: center;
-            margin-top: -50px;
             z-index: 100;
         }
 
-        .texto{
+        .Container-text {
             font-family: 'Slabo 27px', arial,sans-serif;
             width: 600px;
-            height: 100px;
             font-size: 29px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            margin-left: -300px;
+            position: relative;
+            top: 0px;
+            left: 0;
             text-align: center;
-            margin-top: -91px;
+            margin: 55px auto 0;
             z-index: 100;
             opacity: 0.35;
         }
 
-        .coracao{
+        .Container-coracao {
             font-family: 'Slabo 27px', arial,sans-serif;
             width: 600px;
             height: 100px;
             font-size: 50px;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            margin-left: -300px;
+            position: relative;
+            top: 0;
+            left: 0;
             text-align: center;
-            margin-top: -50px;
             z-index: 100;
         }
 
-        .mosaicflow__column { float:left; }
-
-        .mosaicflow__item img {
-            display:block;
-            width:100%;
-            height:auto;
-        }
-
-        .meter {
+        .PercentageRuler {
             height: 20px;
             position: relative;
             background: #FFF;
@@ -79,15 +66,13 @@
             -webkit-border-radius: 25px;
             border-radius: 30px;
             padding: 10px;
-            position: fixed;
             width: 588px;
-            top: 50%;
-            left: 50%;
+            top: 0;
+            left: 0;
             margin-top: 30px;
-            margin-left: -302px;
         }
 
-        .meter > span {
+        .PercentageRuler > span {
             display: block;
             height: 100%;
             width: 0;
@@ -99,6 +84,88 @@
             position: relative;
             overflow: hidden;
             transition: all 1.2s ease 0s;
+        }
+
+        .Percentage {
+            float: left;
+            position: relative;
+            font-family: 'Slabo 27px', arial, sans-serif;
+            top: 23px;
+            font-size: 17px;
+            left: 11%;
+            margin-left: -15px;
+            padding: 10px;
+            color: rgb(242, 62, 62);
+            background: white;
+            border-radius: 10px;
+            min-width: 26px;
+            min-height: 21px;
+        }
+
+        .Percentage i{
+            width: 15px;
+            height: 15px;
+            background: #ffffff;
+            position: absolute;
+            top: -5px;
+            left: 16px;
+            overflow: hidden;
+            z-index: 10;
+            transform: rotate(45deg);
+        }
+
+        .WeekBox {
+            max-width: 168px;
+            background: #F74444;
+            position: relative;
+            margin: 80px auto;
+            padding: 5px;
+            overflow: hidden;
+        }
+
+        .WeekBox-title{
+            font-family: 'Slabo 27px', arial, sans-serif;
+            text-align: center;
+            padding: 6px;
+            text-transform: uppercase;
+            color: #9e2b2b;
+        }
+
+        .WeekBox-content{
+
+        }
+
+        .WeekBox-toCome{
+            font-family: 'Slabo 27px', arial, sans-serif;
+            text-align: center;
+            padding: 6px;
+            float: left;
+            width: 100%;
+            color: #f68181;
+        }
+
+        .Week{
+            width: 10px;
+            height: 10px;
+            margin: 3px;
+            float: left;
+        }
+
+        .Week--spent {
+            background: #c03333;
+        }
+
+        .Week--toCome {
+            background: #f68181;
+        }
+
+
+        .mosaicflow__column { float:left; }
+
+        .mosaicflow__item img {
+            display:block;
+            width:100%;
+            height:auto;
         }
 
     </style>
@@ -118,11 +185,27 @@
 <!--</div>-->
 <!--</div>-->
 
-<div class="container">
-    <div class="texto">Ela volta em</div>
+<div class="Container">
+    <div class="Container-text">Ela volta em</div>
     <div id="Contador"></div>
-    <div class="meter">
-        <span></span>
+    <div class="PercentageRuler">
+        <span class="js-percentageRuler"></span>
+        <div class="Percentage">
+            <i></i>
+            <div class="Percentage-text"></div>
+        </div>
+    </div>
+
+    <div class="WeekBox">
+        <div class="WeekBox-title">
+            Semanas
+        </div>
+        <div class="WeekBox-content">
+
+        </div>
+        <div class="WeekBox-toCome">
+            Faltam <span></span> semanas
+        </div>
     </div>
 </div>
 
@@ -131,10 +214,22 @@
 </body>
 <script>
 
-    CountDownTimer('12/23/2015 09:0 AM', 'Contador');
+    var now = new Date();
+    var start = new Date('03/09/2015 09:0 AM');
+    var end = new Date('12/23/2015 09:0 AM');
 
-    function CountDownTimer(dt, id)
-    {
+    var daysSpent = Math.floor((( now - start ) / 86400000));
+    var daysToCome = Math.floor((( end - start ) / 86400000));
+
+    var weeksSpent = Math.floor(daysSpent / 7);
+    var weeksToCome = Math.floor(daysToCome / 7);
+
+    CountDownTimer('12/23/2015 09:0 AM', 'Contador');
+    populateSemanaBox();
+    setInterval(setPercentageBetweenDates, 2000);
+    WeeksToCome();
+
+    function CountDownTimer(dt, id){
         var end = new Date(dt);
 
         var _second = 1000;
@@ -164,26 +259,45 @@
             document.getElementById(id).innerHTML += minutes + 'min ';
             document.getElementById(id).innerHTML += seconds + 'seg';
 
-            title = days + 'd ';
-            title += hours + 'h ';
-            title += minutes + 'm ';
-            title += seconds + 's';
-
-            document.title = title;
         }
 
         setInterval(showRemaining, 1000);
-        setInterval(setPercentageBetweenDates, 2000)
     }
 
 
 
     function setPercentageBetweenDates(){
-        var now = new Date();
-        var start = new Date('03/09/2015 09:0 AM');
-        var end = new Date('12/23/2015 09:0 AM');
         var percentage = ( ( now - start ) / ( end - start ) ) * 100 + "%" ;
-        $('.meter span').width(percentage);
+        var percentageTooltip = ( ( now - start ) / ( end - start ) ) * 100 ;
+        $('.js-percentageRuler').width(percentage);
+
+        $(".Percentage-text").html(percentageTooltip.toFixed(5) + '%');
+
+        document.title = percentageTooltip.toFixed(5) + '%';
+    }
+
+
+    function populateSemanaBox(){
+        function weekSpentDiv(number){
+            return "<div class='Week Week--spent' title='Semana " + number + "'></div>";
+        }
+
+        function weekToComeDiv(number){
+            return "<div class='Week Week--toCome' title='Semana " + number + "'></div>";
+        }
+
+        for(var i = 0; i <= weeksSpent; ++i){
+            $(".WeekBox-content").append(weekSpentDiv(i + 1))
+        }
+
+        for(var j = 0; j <= weeksToCome; ++j){
+            $(".WeekBox-content").append(weekToComeDiv(j + i + 1))
+        }
+    }
+
+    function WeeksToCome(){
+        $(".WeekBox-toCome span").append(weeksToCome);
+        setInterval(weeksToCome, 100000);
     }
 
 
@@ -194,7 +308,7 @@
 //        });
 
         setTimeout(function(){
-            $(".container").fadeIn();
+            $(".Container").fadeIn();
         }, 1300)
 
     })
