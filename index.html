@@ -406,16 +406,16 @@
 
     var now = new Date();
     var start = new Date('03/09/2015 09:0 AM');
-    var end = new Date('12/23/2015 09:0 AM');
+    var end = new Date('12/21/2015 11:30 AM');
 
     var daysSpent = Math.floor((( now - start ) / 86400000));
-    var daysToCome = Math.floor((( end - start ) / 86400000));
+    var daysToCome = Math.floor((( end - now ) / 86400000));
 
     var weeksSpent = Math.floor(daysSpent / 7);
     var weeksToCome = Math.floor(daysToCome / 7);
 
 
-    countDownTimer('12/23/2015 09:0 AM', 'Contador');
+    countDownTimer('12/21/2015 11:30 AM', 'Contador');
     populateSemanaBox();
     setPercentageBetweenDates();
     WeeksToCome();
@@ -533,10 +533,14 @@
         }, 1300);
 
         var videos = [
-            {videoURL:"O9FECCJ1_7M",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
-            {videoURL: "OQsYiSr58aU",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
-            {videoURL: "JRCTLJQBRC4",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
-            {videoURL: "dtpJgxt6p9Q",containment:'body',autoPlay:true, mute:false, startAt:8,opacity:0.1, loop:false, ratio:"4/3", addRaster:false}
+            {videoURL:"YqeW9_5kURI",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "nntGTK2Fhb0",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "5j1RCys4R0g",containment:'body',autoPlay:true, mute:false, startAt:0,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "Cvjtc4Vh-fo",containment:'body',autoPlay:true, mute:false, startAt:8,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "w9n-t9tazFY",containment:'body',autoPlay:true, mute:false, startAt:8,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "ilw-qmqZ5zY-fo",containment:'body',autoPlay:true, mute:false, startAt:8,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "YltjliK0ZeA",containment:'body',autoPlay:true, mute:false, startAt:8,opacity:0.1, loop:false, ratio:"4/3", addRaster:false},
+            {videoURL: "jGflUbPQfW8",containment:'body',autoPlay:true, mute:false, startAt:8,opacity:0.1, loop:false, ratio:"4/3", addRaster:false}
         ];
 
 
